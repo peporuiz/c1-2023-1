@@ -16,7 +16,7 @@ exports.getUsersName = (ctx) => {
     return ctx
 }
 
-exports.searchUser = (ctx) => {
+exports.searchUser = (ctx) => { //Función que devuleve la busqueda filtrando con los respectivos errores
     if (ctx.request.body.name === undefined || ctx.request.body.name.length < 1) {
             ctx.status = 400
             ctx.body = {message: 'Peticion mal realizada'}
@@ -24,6 +24,9 @@ exports.searchUser = (ctx) => {
     }
     let result = usersActions.searchUser(ctx.request.body.age, ctx.request.body.name,
         ctx.request.body.gender, ctx.request.body.company, ctx.request.body.isActive)
+    if(result == -1){
+        ctx.status = 500
+    }
     ctx.status = 200
-    ctx.body = { message: 'Este es el user', result}
+    ctx.body = { message: 'Estos son los user', result}
 }
