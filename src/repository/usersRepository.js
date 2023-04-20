@@ -5,7 +5,7 @@ exports.getUsersFromDataset = () => {
 }
 
 
-exports.getUsersName = (name) => {
+exports.getUsersName = (name) => { //Método para imprimir los usuarios según 
     let usersArray = []
     name=name.toLowerCase()
     dataset.forEach(dataset => {   
